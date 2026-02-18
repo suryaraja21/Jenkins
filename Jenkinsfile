@@ -26,7 +26,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'javac Main.java'
+                bat 'javac WrongFileName.java'
             }
         }
 
