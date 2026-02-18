@@ -22,4 +22,14 @@ pipeline {
             }
         }
     }
+    post{
+        success {
+            echo 'BUILD SUCCESSFULL'
+        }
+        failute {
+            echo 'BUILD FAILED'
+        }always {
+            echo 'PIPELINE EXECUTION COMPLETED'
+        }
+    }
 }
