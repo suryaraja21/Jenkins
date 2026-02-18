@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    options {
+        skipDefaultCheckout(true)
+    }
+
     stages {
 
         stage('Clean Workspace') {
@@ -11,6 +15,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
+                checkout scm
                 echo 'Source code checked out from Git'
                 bat 'dir'
             }
