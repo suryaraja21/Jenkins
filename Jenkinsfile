@@ -22,14 +22,16 @@ pipeline {
             }
         }
     }
-    post{
+
+    post {
         success {
-            echo 'BUILD SUCCESSFULL'
+            echo 'BUILD SUCCESSFUL'
         }
         failure {
             echo 'BUILD FAILED'
-        }always {
-            echo 'PIPELINE EXECUTION COMPLETED'
+        }
+        always {
+            echo 'Pipeline execution completed'
         }
     }
 }
