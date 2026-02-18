@@ -26,7 +26,7 @@ pipeline {
         success {
             echo 'BUILD SUCCESSFULL'
         }
-        failute {
+        failure {
             echo 'BUILD FAILED'
         }always {
             echo 'PIPELINE EXECUTION COMPLETED'
