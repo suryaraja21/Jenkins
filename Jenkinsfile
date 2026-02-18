@@ -5,6 +5,10 @@ pipeline {
         skipDefaultCheckout(true)
     }
 
+    triggers {
+        pollSCM('* * * * *')
+    }
+
     stages {
 
         stage('Clean Workspace') {
@@ -16,7 +20,6 @@ pipeline {
         stage('Checkout') {
             steps {
                 checkout scm
-                echo 'Source code checked out from Git'
                 bat 'dir'
             }
         }
@@ -33,17 +36,23 @@ pipeline {
                 bat 'java Main'
             }
         }
+
+        stage('Archive Artifacts') {
+            steps {
+                archiveArtifacts artifacts: '*.class', fingerprint: true
+            }
+        }
     }
 
     post {
         success {
-            echo 'BUILD SUCCESSFUL'
+            echo 'CI PIPELINE SUCCESSFUL'
         }
         failure {
-            echo 'BUILD FAILED'
+            echo 'CI PIPELINE FAILED'
         }
         always {
-            echo 'Pipeline execution completed'
+            echo 'CI execution completed'
         }
     }
 }
